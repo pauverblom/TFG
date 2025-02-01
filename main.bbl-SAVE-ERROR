@@ -1,0 +1,57 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{berg2014permeability}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=71a88d5428567052f55e5e4037ff701d}{%
+           family={Berg},
+           familyi={B\bibinitperiod},
+           given={Carl\bibnamedelima Fredrik},
+           giveni={C\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{71a88d5428567052f55e5e4037ff701d}
+      \strng{fullhash}{71a88d5428567052f55e5e4037ff701d}
+      \strng{bibnamehash}{71a88d5428567052f55e5e4037ff701d}
+      \strng{authorbibnamehash}{71a88d5428567052f55e5e4037ff701d}
+      \strng{authornamehash}{71a88d5428567052f55e5e4037ff701d}
+      \strng{authorfullhash}{71a88d5428567052f55e5e4037ff701d}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Transport in porous media}
+      \field{number}{3}
+      \field{title}{Permeability description by characteristic length, tortuosity, constriction and porosity}
+      \field{volume}{103}
+      \field{year}{2014}
+      \field{pages}{381\bibrangedash 400}
+      \range{pages}{20}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
