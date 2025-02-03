@@ -1,19 +1,15 @@
-\documentclass[a4paper, 12pt,oneside]{book} % Here you chose the paper size and font size. The command onside ensures that pages are not shifted left and right (as is common for printed books). 
+\documentclass[a4paper, 12pt, oneside]{book} % Here you chose the paper size and font size. Te command onside ensures that pages are not shifted left and right (as is common for printed books). 
 \usepackage[utf8]{inputenc} % Added to manage special characters, like Norwegian letters
 \usepackage[T1]{fontenc} % To manage special characters
-\usepackage{titlesec} % Used to change format for chapter titles
-\titleformat{\chapter}[display]
-  {\bfseries\Huge}  {\filright{\Large\chaptertitlename} \Huge\thechapter}
-  {1ex}
-  {}%}\vspace{1ex}\filleft}
-  [\vspace{1ex}\titlerule]
-%\usepackage[Bjarne]{fncychap} %fancy chapter style (many more available, like Sonny or Lenny etc.)
+\usepackage[Lenny]{fncychap} % fancy chapter style (many more available, like Sonny, Bjarne, etc)
+\ChNameVar{\Large\rm\bfseries} % Set name to serif, bold
 \usepackage{fancyhdr} %to customize the headers
 \fancyhead{\nouppercase}
 %\usepackage[lmargin=1in, rmargin=1in, tmargin=1.5in, bmargin=1.3in]{geometry} %sets the margins for the pages
 \setcounter{tocdepth}{2} %table of contents number depth for subsections (2 = x.x.x)
 \setcounter{secnumdepth}{4} %numbering depth for headers for subsections in the text(4 = x.x.x.x)
 \usepackage{url} %to include urls
+\usepackage{lipsum}
 \usepackage{listings} %include this if you want to include code in the thesis
 \usepackage{amsmath,amssymb} %mathematical package
 \usepackage[per-mode=symbol]{siunitx} %includes SI-units
@@ -28,6 +24,7 @@
 \counterwithin{table}{section} %change counter for tables within sections
 \usepackage{color, xcolor} %edit e.g. text colors
 \usepackage{hyperref} %Adding internal links in you document
+\usepackage{bookmark}
 \hypersetup{
     colorlinks,
     citecolor=black,
