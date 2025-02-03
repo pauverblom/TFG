@@ -3,7 +3,7 @@ clc; clear; close all;
 num_steps = 1000;        % Number of steps
 step_size = 1;          % Step size
 num_particles = 2000;   % Number of particles
-max_angle_values = nonLinspace(0, pi, 20, "exp10"); % We want to test more points closer to the origin, to resolve more detail. Hence the use of the nonLinspace function
+max_angle_values = nonLinspace(pi, pi, 1, "exp10"); % We want to test more points closer to the origin, to resolve more detail. Hence the use of the nonLinspace function
 
 avg_distances = zeros(size(max_angle_values));
 expected_rmsd = sqrt(num_steps) * step_size;
@@ -79,7 +79,7 @@ for t = 1:length(max_angle_values)
         final_positions(:, p) = position(:, num_steps);
     end
     % Compute average final distance for a given max_angle
-    avg_distances(t) = mean(sqrt(sum(final_positions.^2, 1)));
+    avg_distances(t) = 
 end
 
 % Plot results

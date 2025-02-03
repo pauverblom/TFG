@@ -1,7 +1,7 @@
 
 % Number of random points to generate
 N = 1000;
-max_angle = 0.1;
+max_angle = 0.7;
 
 % Generate a random direction for the spherical cap
 theta_d = acos(2 * rand() - 1);  % Random inclination

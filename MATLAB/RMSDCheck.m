@@ -1,19 +1,20 @@
 clc; clear; close all;
 
-num_steps = 1000;        % Number of steps
+num_step_values = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 4000, 6000, 8000, 10000];        % We are going to check the RMSD for a different number of steps
 step_size = 1;          % Step size
-num_particles = 2000;   % Number of particles
-max_angle_values = nonLinspace(0, pi, 20, "exp10"); % We want to test more points closer to the origin, to resolve more detail. Hence the use of the nonLinspace function
+num_particles = 400;   % Number of particles
+max_angle = pi; % We check only for max_angle = pi, since we should get the behaviour expected from a random walk
 
-avg_distances = zeros(size(max_angle_values));
-expected_rmsd = sqrt(num_steps) * step_size;
+avg_distances = zeros(size(num_step_values));
+expected_rmsd = zeros(size(num_step_values));
 
-% Iterate over different max_angle values
-for t = 1:length(max_angle_values)
-    max_angle = max_angle_values(t);
+% Iterate over different num_step values
+for t = 1:length(num_step_values)
+    num_steps = num_step_values(t);
+    expected_rmsd(t) = sqrt(num_steps) * step_size;
     final_positions = zeros(3, num_particles);
     
-    % Simulate multiple particles for the same angle
+    % Simulate multiple particles
     for p = 1:num_particles
         position = zeros(3, num_steps);
 
@@ -75,43 +76,16 @@ for t = 1:length(max_angle_values)
             current_dir = new_step / norm(new_step);
         end
 
-        % Store final positions for a singular particles for a given max_angle
+        % Store final positions
         final_positions(:, p) = position(:, num_steps);
     end
-    % Compute average final distance for a given max_angle
+    % Compute average final distance
     avg_distances(t) = mean(sqrt(sum(final_positions.^2, 1)));
 end
 
-% Plot results
-figure;
-plot(max_angle_values, avg_distances, 'r-o', 'LineWidth', 1.5);
-hold on;
+plot(num_step_values, expected_rmsd)
+hold on; 
+grid on;
+plot(num_step_values, avg_distances)
 
-% Check expected behavior at max_angle = pi
-if any(max_angle_values == pi)
-    fprintf('Expected RMSD: %.2f\n', expected_rmsd);
-    fprintf('Measured RMSD at max_angle = pi: %.2f\n', avg_distances(end)); % Average distance at max_angle = pi
-    
-    % Plot separate histograms of final positions for max_angle = pi
-    figure;
-    histogram(final_positions(1, :), 'FaceColor', 'r', 'EdgeColor', 'k', 'NumBins', 20);
-    title('Histogram of Final X Positions (\vartheta_{max} = π)');
-    xlabel('Positions');
-    ylabel('Frequency');
-    grid on;
-    hold on;
-    fprintf('Mean X position: %.2f\n', mean(final_positions(1, :)));
-    fprintf('X position variance: %.2f\n', var(final_positions(1, :)));
-    
-    histogram(final_positions(2, :), 'FaceColor', 'g', 'EdgeColor', 'k', 'NumBins', 20);
-    fprintf('Mean Y position: %.2f\n', mean(final_positions(2, :)));
-    fprintf('Y position variance: %.2f\n', var(final_positions(2, :)));
-    
-    histogram(final_positions(3, :), 'FaceColor', 'b', 'EdgeColor', 'k', 'NumBins', 20);
-    fprintf('Mean Z position: %.2f\n', mean(final_positions(3, :)));
-    fprintf('Z position variance: %.2f\n', var(final_positions(3, :)));
-    legend('X positions', 'Y positions', 'Z positions');
-end
-
-figure;
-plot3(position(1, :), position(2, :), position(3, :));
+plot(num_step_values, abs(expected_rmsd-avg_distances))
