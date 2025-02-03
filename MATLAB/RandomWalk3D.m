@@ -1,6 +1,6 @@
 clc; clear; close all;
 
-num_steps = 1000;        % Number of steps
+num_steps = 400;        % Number of steps
 step_size = 1;          % Step size
 num_particles = 2000;   % Number of particles
 max_angle_values = nonLinspace(0, pi, 20, "exp10"); % We want to test more points closer to the origin, to resolve more detail. Hence the use of the nonLinspace function
@@ -21,7 +21,7 @@ for t = 1:length(max_angle_values)
         %position(:, 1) = sph2cart(2 * pi * rand(), acos(2 * rand() - 1), radius);
 
         % Random initial direction
-        current_dir = rand(3, 1);
+        current_dir = randn(3, 1);
         current_dir = current_dir / norm(current_dir);  % Normalize to unit vector
 
         for i = 2:num_steps
@@ -81,7 +81,7 @@ for t = 1:length(max_angle_values)
     % Compute average final distance for a given max_angle
     avg_distances(t) = mean(sqrt(sum(final_positions.^2, 1)));
 end
-
+%%
 % Plot results
 figure;
 plot(max_angle_values, avg_distances, 'r-o', 'LineWidth', 1.5);

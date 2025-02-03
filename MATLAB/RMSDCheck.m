@@ -2,7 +2,7 @@ clc; clear; close all;
 
 num_step_values = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 4000, 6000, 8000, 10000];        % We are going to check the RMSD for a different number of steps
 step_size = 1;          % Step size
-num_particles = 400;   % Number of particles
+num_particles = 5000;   % Number of particles
 max_angle = pi; % We check only for max_angle = pi, since we should get the behaviour expected from a random walk
 
 avg_distances = zeros(size(num_step_values));
@@ -13,7 +13,7 @@ for t = 1:length(num_step_values)
     num_steps = num_step_values(t);
     expected_rmsd(t) = sqrt(num_steps) * step_size;
     final_positions = zeros(3, num_particles);
-    
+
     % Simulate multiple particles
     for p = 1:num_particles
         position = zeros(3, num_steps);
@@ -22,7 +22,7 @@ for t = 1:length(num_step_values)
         %position(:, 1) = sph2cart(2 * pi * rand(), acos(2 * rand() - 1), radius);
 
         % Random initial direction
-        current_dir = rand(3, 1);
+        current_dir = randn(3, 1);
         current_dir = current_dir / norm(current_dir);  % Normalize to unit vector
 
         for i = 2:num_steps
@@ -81,11 +81,46 @@ for t = 1:length(num_step_values)
     end
     % Compute average final distance
     avg_distances(t) = mean(sqrt(sum(final_positions.^2, 1)));
+
+    if t == length(num_step_values)
+        % Calculate mean displacement
+        mean_displacement = mean(final_positions, 2);
+        fprintf('Final mean displacement: [%.4f, %.4f, %.4f]\n', mean_displacement);
+        
+        % Calculate covariance matrix
+        cov_matrix = cov(final_positions');
+        disp('Final covariance matrix:');
+        disp(cov_matrix);
+    end
 end
-
-plot(num_step_values, expected_rmsd)
-hold on; 
+%%
+% Plot RMSD results
+figure;
+plot(num_step_values, expected_rmsd, 'b-o', 'LineWidth', 1.5, 'MarkerSize', 8);
+hold on;
+plot(num_step_values, avg_distances, 'r--x', 'LineWidth', 1.5, 'MarkerSize', 8);
+legend('Theoretical RMSD ($\sqrt{N}$)', 'Simulated RMSD', 'Location', 'northwest', 'Interpreter', 'latex');
+xlabel('Number of Steps (N)');
+ylabel('RMS Displacement');
+title('3D Random Walk: RMSD vs Number of Steps');
 grid on;
-plot(num_step_values, avg_distances)
 
-plot(num_step_values, abs(expected_rmsd-avg_distances))
+% Plot position histograms for largest N
+figure;
+subplot(1,3,1);
+histogram(final_positions(1,:), 'FaceColor', 'r', 'EdgeColor', 'k');
+title('X Positions');
+xlabel('Position');
+ylabel('Frequency');
+
+subplot(1,3,2);
+histogram(final_positions(2,:), 'FaceColor', 'g', 'EdgeColor', 'k');
+title('Y Positions');
+xlabel('Position');
+
+subplot(1,3,3);
+histogram(final_positions(3,:), 'FaceColor', 'b', 'EdgeColor', 'k');
+title('Z Positions');
+xlabel('Position');
+
+sgtitle('Final Position Distributions (N = 10,000)');

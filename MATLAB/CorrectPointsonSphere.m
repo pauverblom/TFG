@@ -38,7 +38,7 @@ for i = 1:N
     y_vals(i) = sin(theta_rot) * sin(phi_rot);
     z_vals(i) = cos(theta_rot);
 end
-
+%%
 % Plot points in 3D space
 figure;
 scatter3(x_vals, y_vals, z_vals, 10, 'filled');
