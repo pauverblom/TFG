@@ -1,0 +1,1 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThe IceCube Collaboration reanalyzed the arrival directions of astrophysical neutrinos and then searched for point sources (see the Perspective by Murase).\\E$"}

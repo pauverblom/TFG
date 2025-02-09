@@ -1,5 +1,5 @@
 % Parameters
-Rmax = 10;              % Maximum radius of the sphere
+Rmax = 30;              % Maximum radius of the sphere
 n = 10000;              % Number of points per distribution
 alphas = [0.01, 0.1, 0.5, 1, 3, 5, 10];     % Different alpha values to explore
 figure;
