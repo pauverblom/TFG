@@ -1,1 +1,4 @@
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThe IceCube Collaboration reanalyzed the arrival directions of astrophysical neutrinos and then searched for point sources (see the Perspective by Murase).\\E$"}
+{"rule":"SINGULAR_VERB_AFTER_THESE_OR_THOSE","sentence":"^\\QThe third discovery which is often mentioned in the same breath as these two is that of Active Galactic Nuclei (AGN).\\E$"}
+{"rule":"SOME_OF_THE","sentence":"^\\QThe torus absorbs some of the radiation produced in the accretion disk, and re-emits it in the infrared.\\E$"}
+{"rule":"SOME_OF_THE","sentence":"^\\QThe Obscuring Torus: A region of dust and gas surrounding the accretion disk, which absorbs some of the radiation and re-emits it in the infrared.\\E$"}
