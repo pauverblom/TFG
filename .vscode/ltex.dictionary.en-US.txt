@@ -9,3 +9,11 @@ Verdeguer
 Pau
 Blom-Dahl
 Mpc
+pions
+bremsstrahlung
+Comptonized
+Bremsstrahlung
+synchrotron
+Synchrotron
+HII
+circumnuclear

@@ -1,13 +1,13 @@
 \chapter{Active Galactic Nuclei}
-\label{chap:Background}
-\section{General concepts}
+\label{chap:Active Galactic Nuclei}
+\section{General Concepts}
 As technology progressed through the 20th century, astronomers were able to observe the universe in new ways, discovering new phenomena and objects that were previously unknown. Discoveries such as the cosmic microwave background and pulsars revolutionized our understanding of the universe and the laws of physics that govern it.
 
 The third discovery which is often mentioned in the same breath as these two is that of Active Galactic Nuclei (AGN), or more precisely, quasars ("Quasi stellar radio sources").
 
-These objects are among the most luminous and energetic in the universe, being able to outshine entire galaxies in a volume which is incredibly small. The energy output of these objects is so high that it is difficult to explain how they can produce so much energy. The most accepted theory is that this energy is produced by the accretion of matter onto supermassive black holes which have masses ranging anywhere from $10^6$ to $10^10$ solar masses. The matter is heated up to millions of degrees, and the radiation produced is emitted across the electromagnetic spectrum, through different processes.
+These objects are among the most luminous and energetic in the universe, being able to outshine entire galaxies in a volume which is incredibly small. The energy output of these objects is so high that it is difficult to explain how they can produce so much energy. The most accepted theory is that this energy is produced by the accretion of matter onto supermassive black holes, which have masses ranging anywhere from $10^6$ to $10^{10}$ solar masses. The matter is heated up to millions of degrees, and the radiation produced is emitted across the electromagnetic spectrum through different processes.
 
-The structure of AGNs is complex, with different regions emitting different types of radiation. Generally, we find the following:
+The structure of AGNs is complex, with different regions emitting different types of radiation. Generally, we find the following \citep{RadiativeProcesses}:
 
 \begin{itemize}
     \item \textbf{The Supermassive Black Hole:} A black hole whose origins are still debated, but which is believed to have formed in the early universe. It has a mass of $10^6 - 10^{10}$ solar masses, and is the source of the energy produced in AGNs.
@@ -16,12 +16,12 @@ The structure of AGNs is complex, with different regions emitting different type
     \item \textbf{The Obscuring Torus:} A region of dust and gas surrounding the accretion disk, which absorbs some of the radiation and re-emits it in the infrared.
     \item \textbf{The Broad Line Region:} A region of ionized gas composed of numerous small, rapidly moving clouds situated near the accretion disk. This region emits broad emission lines in the optical and ultraviolet spectrum due to the Doppler effect caused by the high velocities.
     \item \textbf{The Narrow Line Region:} A region of ionized gas located further away from the accretion disk, which emits narrow emission lines in the optical and ultraviolet spectrum. The narrowness of these lines is due to the lower velocities of the gas clouds.
-    \item \textbf{The Jet:} Some AGN present a region of highly energetic particles that are ejected from the poles of the black hole at relativistic speeds. These jets can extend for thousands of light-years and emit all kinds of radiation.
+    \item \textbf{The Jet:} Some AGNs present a region of highly energetic particles that are ejected from the poles of the black hole at relativistic speeds. These jets can extend for thousands of light-years and emit all kinds of radiation.
 \end{itemize}
 
 The figure below illustrates neatly the structure of an AGN.
 
-\begin{figure}[H]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.7\textwidth]{Figures/AGN Structure.jpg}
     \caption{The structure of an Active Galactic Nucleus. The different regions mentioned before are labeled.}
@@ -29,13 +29,60 @@ The figure below illustrates neatly the structure of an AGN.
 \end{figure}
 
 
+\section{Radiation in the AGN}
+
+The main topic of this project is the production of gamma rays in the AGN of NGC 1068, and how these gamma rays interact with the surrounding gas and radiation. We should first try to understand the underlying mechanisms that produce this type of radiation, as well as all the types of radiation at play in such regions.
+
+It is also essential to make a distinction between thermal and non-thermal emission processes. Thermal emission has its origin in hot matter in the AGN. It follows a blackbody-like distribution, and is produced by particles which are in thermal equilibrium. Non-thermal emission, on the other hand, is produced by particles that are not in thermal equilibrium, and are accelerated to high energies, producing then radiation through different processes.
+
+The AGN of NGC 1068 emits radiation across the electromagnetic spectrum:
+
+\begin{itemize}
+    \item \textbf{Radio Emission:}
+    \subitem \textbf{Synchrotron Radiation:} Generated by relativistic electrons spiraling in magnetic fields, which is common in AGN jets and lobes.
+    \subitem \textbf{Free-Free Emission:} Generated by the interaction of free electrons with ions in the gas, which is common in HII regions (regions of ionized hydrogen).
+    \subitem \textbf{Maser Emission:} In some AGNs, water or other molecules in dense regions produce amplified microwave (maser) signals.
+    \item \textbf{Infrared Emission:}
+    \subitem \textbf{Thermal Dust Emission:} Dust in the circumnuclear torus absorbs higher-energy photons and re-emits them as infrared radiation.
+    \item \textbf{Optical/UV Emission:}
+    \subitem \textbf{Thermal Emission:} The inner parts of the accretion disk around the supermassive black hole are heated up to millions of degrees, which then emit thermal radiation, primarily in the optical/UV range.
+    \subitem \textbf{Broad and Narrow Line Emission:} Ionized gas in the broad-line region and narrow-line region produces characteristic optical spectral lines.
+    \item \textbf{X-ray Emission:}
+    \subitem \textbf{Non-thermal Emission:} Relativistic electrons in the jets can upscatter soft photons to X-ray energies.
+    \subitem \textbf{Bremsstrahlung:} In some cases, collisions in the hot gas produce thermal X-ray emission.
+    \item \textbf{Gamma-ray Emission:} 
+    \subitem \textbf{Inverse Compton Scattering:} In the AGN jets, high-energy electrons collide with low-energy background photons, transferring energy to them and increasing their energy into the gamma-ray range.
+    \subitem \textbf{Proton-proton interactions:} High-energy protons collide with other protons in the gas, producing pions which decay into gamma rays or neutrinos.
+    \subitem \textbf{Proton-photon interactions:} High-energy protons collide with low-energy photons, which also produce pions that in turn also decay into gamma rays or neutrinos.
+
+\end{itemize}
+
+All in all, we get a complex distribution of energies in the AGN, with different processes producing different kinds of radiation. We can show this distribution in a spectral energy distribution (SED) plot, which shows the luminosity of the AGN as a function of frequency. Figure \ref{fig:AGN_SED} shows a schematic representation of the expected SED of a general AGN.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/AGN SED.png}
+    \caption{A simplified schematic diagram of an AGN SED, showing the approximate shape and extent of the various components discussed in the text. Dashed lines denote AGN intrinsic emission, dash-dot lines show emission reprocessed by the surrounding material and the dotted line shows starlight from an elliptical host galaxy. The hatched region highlights the spectral range that is heavily obscured by absorption in the IGM. We only show an elliptical galaxy here; galaxies with active star formation have stronger UV/IR contributions. Figure taken from \citet{QuasarSEDCollinson_2016}.}
+    \label{fig:AGN_SED}
+\end{figure}
+
+Proton-proton interactions and proton-photon interactions in the AGN of NGC 1068 are of special interest, since these processes also produce neutrinos, whose energy spectrum is related to the gamma-ray spectrum in a clear and predictable manner.
+
+
+\section{Gamma-ray Production in AGNs}
+
+As mentioned above, gamma rays in AGNs are produced through different processes. We will focus on proton-proton and proton-photon interactions, which are the main sources of gamma rays and neutrinos in AGNs.
+
+Inside AGNs, close to the supermassive black hole, we have a region of hot, ionized gas. This gas is composed of protons and electrons, which are accelerated to high energies by the extremely high magnetic fields present in the region. These protons can then collide with other protons in the gas, producing pions through the process specified below:
+
+
+
 \section{The AGN of NGC 1068}
 
-The AGN of NGC 1068 is one of the most studied AGNs in the night sky, being relatively close to us (14.4 Mpc) and having a high luminosity. It is classified as a Seyfert II galaxy, which means that it has a bright nucleus and narrow emission lines in its spectrum. The classification of galaxies into these two groups (Seyfert I and II) just has to do with the angle at which we observe the galaxy. Seyfert I galaxies are observed face-on, while Seyfert II galaxies are observed edge-on.
+The AGN of NGC 1068 is one of the most studied AGNs in the night sky, being relatively close to us (14.4 Mpc)\footnote{Though the validity of this measurement is debated. \citet{padovani2024highenergyneutrinosvicinitysupermassive} place its distance at 10.1 Mpc, according to a 2008 paper led by the same author who published the original value.} and having a high luminosity. It is classified as a Seyfert II galaxy, which means that it has a bright nucleus and narrow emission lines in its spectrum. The classification of galaxies into these two groups (Seyfert I and II) just has to do with the angle at which we observe the galaxy. Seyfert I galaxies are observed face-on, while Seyfert II galaxies are observed edge-on.
 
-The AGN of NGC 1068 has been observed across the electromagnetic spectrum, from radio to gamma rays. The gamma-ray emission of this AGN is particularly interesting, as it has been detected by the \textit{Fermi} satellite and the MAGIC telescope. The gamma-ray emission of NGC 1068 is believed to be produced by the interaction of high-energy particles with the gas and radiation in the AGN, leading to the production of gamma rays through different processes.
+The AGN of NGC 1068 has been observed across the electromagnetic spectrum, from radio to gamma rays.  
 
-\section{Radiation}
 
 %The background section should give sufficient background information to give the reader an overview of the state-of-the-art research field in which you work.
 
