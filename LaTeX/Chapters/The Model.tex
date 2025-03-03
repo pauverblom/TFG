@@ -10,7 +10,7 @@ We are interested in connecting the interaction rate of photons with energy E to
     \label{eq:interaction_rate_first_one}
 \end{equation}
 
-Where $s_{min}$ is the threshold energy for pair production, and $\Theta(s-s_{min})$ is the Heaviside step function. It is there to ensure we only integrate over possible energies. The pair-production cross-section $\sigma_{pair}(s)$ is well-known, and is given by the following equation:
+Where $s_{min}$ is the threshold energy for pair production, and $\Theta(s-s_{min})$ is the Heaviside step function. It is there to ensure we only integrate over possible energies (the minimum required energy for pair production). The pair-production cross-section $\sigma_{pair}(s)$ is well-known, and is given by the following equation:
 
 \begin{equation}
     \sigma_{\rm pair}(s)=\frac{3}{4}\,\sigma_{{\rm Th}}\, \frac{m_e^2}{s}
@@ -18,7 +18,7 @@ Where $s_{min}$ is the threshold energy for pair production, and $\Theta(s-s_{mi
     \label{eq:sigma-pair}
 \end{equation}
 
-Where $\sigma_{\rm Th}$ is the Thomson cross-section, $m_e$ is the electron mass, $\beta = \sqrt{1-4\,m_e^2/s}$, and $s = 2E\varepsilon(1-\mu)$.
+Where $\sigma_{\rm Th}$ is the Thomson cross-section, $m_e$ is the electron mass, $\beta = \sqrt{1-4\,m_e^2/s}$, $s = 2E\varepsilon\,(1-\mu)$ and $\mu = \cos(\theta)$, where $\theta$ is the angle between the incoming photon and the produced electron.
 
 From equation \ref{eq:interaction_rate_first_one}, it is convenient to rewrite the integrals in terms of the mandelstam variable $s$, and swap the order of integration. Doing this, we get the following equation:
 
@@ -36,17 +36,59 @@ From equation \ref{eq:interaction_rate_first_one}, it is convenient to rewrite t
 
 Notice that for a given s, we have $s \leq 4E\varepsilon$, which implies that $\varepsilon \geq \frac{s}{4E}$. This is the reason for the lower limit of the $\varepsilon$-integral. The upper limit of the $\varepsilon$-integral is $\varepsilon_{max}$, which is an arbitrary maximum energy which we expect to find of the background photons.
 
-To find the interaction rate of photons with energy E, we need to know the spectral density of background photons $n_{\gamma}(\varepsilon)$. We will assume that the spectral density of background photons is given by piecewise power-law distributions, given by the following equations:
+To find this interaction rate of photons with energy E, we need to know the spectral density of background photons $n_{\gamma}(\varepsilon)$. In order to derive this quantity, we first needed to know what the spectral energy distribution of background photons looks like. \citet{Eichmann_2022} use in their work a spectrum of background photons for the starburst and x-ray corona region, which can be seen in Fig. 5 of their paper.
+
+I will use this background spectrum to model the density of background photons $n_{\gamma}(\varepsilon)$. In figure \ref{fig:background_spectral_density}, I have represented the data from \citet{Eichmann_2022} as black dots and triangles, to get an idea of the rough shape of the SED. The two main components of the SED can be seen, one for the starburst region, which is modeled by Planck's Law (which I have fitted onto the data), and one for the x-ray corona region.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/Background_SED_AGN.pdf}
+    \caption{Spectral Energy Distribution of the background photons inside the AGN of NGC 1068, with the fitted Planck's Law for the starburst region and the piecewise function for the flux of background photons.} 
+    \label{fig:background_spectral_density}
+\end{figure}
+
+Using these two regions, I have constructed a rough piecewise function for the differential flux of background photons $\Phi(\varepsilon)$ (the red lines in figure \ref{fig:background_spectral_density}), which is given by the equation below:
 
 \begin{equation}
-    n_{\gamma}(\varepsilon) = \left\{
+    \label{eq:piecewise_phi}
+    \Phi(\varepsilon) = \left\{
     \begin{array}{ll}
-        n_0\left(\frac{\varepsilon}{\varepsilon_0}\right)^{-\alpha_1} & \text{for } \varepsilon_{min} \leq \varepsilon \leq \varepsilon_{br} \\
-        n_0\left(\frac{\varepsilon_{br}}{\varepsilon_0}\right)^{-\alpha_1}\left(\frac{\varepsilon}{\varepsilon_{br}}\right)^{-\alpha_2} & \text{for } \varepsilon_{br} \leq \varepsilon \leq \varepsilon_{max}
+        10^{9.7}\,\varepsilon^2 & \text{, } 10^{-6} \leq \varepsilon \leq 4.3 \times 10^{-2} \, \text{eV}\\
+        10^{3.9}\,\varepsilon^{-2.25} & \text{, } 4.3 \times 10^{-2} \leq \varepsilon \leq 2.6 \times 10^{5} \, \text{eV}\\
+        10^{35}\,\varepsilon^{-8} & \text{, } 2.6 \times 10^{5} \leq \varepsilon \leq 10^{8} \, \text{eV}\\
+        
     \end{array}
     \right.
-    \label{eq:spectral_density}
 \end{equation}
+
+$n_{\gamma}(\varepsilon)$ can be connected to $\Phi(\varepsilon)$ in the following manner: we know that the differential flux of background photons relates to the specific intensity $I(\varepsilon)$ by the following equation:
+
+\begin{equation}
+    I(\varepsilon) = \frac{\Phi(\varepsilon)}{\Omega}
+    \label{eq:flux_specific_intensity}
+\end{equation}
+
+For a spherical source of radius $R$ at a distance $d$, $\Omega \approx \pi \left(\frac{R}{d}\right)^2$
+
+We can also connect $I(\varepsilon)$ to the spectral density of background photons $n_{\gamma}(\varepsilon)$ by the following equation:
+
+\begin{equation}
+    n_{\gamma}(\varepsilon) = \frac{4\pi}{c}I(\varepsilon)
+    \label{eq:n_phi}
+\end{equation}
+
+Where $c$ is the speed of light. By combining equations \ref{eq:flux_specific_intensity} and \ref{eq:n_phi}, we can find the spectral density of background photons $n_{\gamma}(\varepsilon)$ in terms of $\Phi(\varepsilon)$:
+\begin{equation}
+    n_{\gamma}(\varepsilon) = \frac{4}{c}\left(\frac{d}{R}\right)^2\Phi(\varepsilon)
+    \label{eq:n_gamma}
+\end{equation}
+
+Where $d$ is the distance to the AGN, and $R$ is the radius of the corona.
+
+For this work, I will assume that the distance to NGC1068 is $d = 10.1$ Mpc, and the radius of the corona is $R = 7 \times 10^{-5}$ pc. These values come both from \citet{padovani2024highenergyneutrinosvicinitysupermassive}. The coronal radius can be parametrized as $R = \eta R_s$, with $\eta \sim 10 - 100$ (I shall assume $\eta = 50$), and $R_s$ being the Schwartzschild radius of the black hole, calculated to be around $1.4 \times 10^{-6}$ pc.
+
+
+
 % \chapter{Theory}
 % \label{chap:Theory}
 

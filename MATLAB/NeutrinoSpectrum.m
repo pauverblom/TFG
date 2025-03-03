@@ -6,7 +6,7 @@ purple = [0.7, 0.5, 0.9];
 data = readmatrix(filename, 'Delimiter', '\t', 'NumHeaderLines', 1);
 
 % Extract the columns into separate variables
-energy = data(:,1); % Energy [GeV]
+energy = data(:,1) * 10^9; % Energy [eV]
 flux_best_fit = data(:,2); % E^2.flux (best-fit) [TeVcm^(-2)s^(-1)]
 flux_95_low = data(:,3); % E^2.flux (95%-low) [TeVcm^(-2)s^(-1)]
 flux_95_up = data(:,4); % E^2.flux (95%-up) [TeVcm^(-2)s^(-1)]

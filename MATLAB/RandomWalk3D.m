@@ -2,7 +2,7 @@ clc; clear; close all;
 
 num_steps = 400;        % Number of steps
 step_size = 1;          % Step size
-num_particles = 2000;   % Number of particles
+num_particles = 20;   % Number of particles
 max_angle_values = nonLinspace(0, pi, 20, "exp10"); % We want to test more points closer to the origin, to resolve more detail. Hence the use of the nonLinspace function
 
 avg_distances = zeros(size(max_angle_values));
