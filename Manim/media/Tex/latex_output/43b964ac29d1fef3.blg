@@ -1,5 +1,0 @@
-[0] Config.pm:307> INFO - This is Biber 2.19
-[0] Config.pm:310> INFO - Logfile is 'latex_output/43b964ac29d1fef3.blg'
-[37] biber-darwin:340> INFO - === Wed Feb 26, 2025, 15:40:44
-[170] Utils.pm:410> ERROR - Cannot find '43b964ac29d1fef3.bcf'!
-[171] Biber.pm:136> INFO - ERRORS: 1
