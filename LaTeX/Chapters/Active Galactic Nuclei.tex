@@ -143,15 +143,28 @@ The interesting part from this is that, since these particles come from the same
 
 NGC 1068 is a Seyfert galaxy located in the constellation Cetus, approximately 47 million light-years away from Earth. It is one of the closest AGNs to our galaxy, and has been the subject of numerous studies due to its unique properties.
 
-The publishing of data from the IceCube collaboration \citep{IceCube2022} has sparked numerous studies on the gamma-ray and neutrino emission from NGC 1068. Turning our attention to the SED of NGC 1068, we can see that the gamma-ray emission is expected to be comparable to the neutrino emission, as shown in figure \ref{fig:NGC1068_SED}.
+The publishing of data from the IceCube collaboration \citep{IceCube2022} has sparked numerous studies on the gamma-ray and neutrino emission from NGC 1068. Turning our attention to the SED of NGC 1068, we can see on figure \ref{fig:NGC1068_SED} that the gamma-ray emission, which should be comparable to the neutrino emission, is considerably lower.
+
+
+
+In the figure, several features are highlighted: 
+\begin{enumerate}
+    \item The $\nu^{-0.7}$ radio spectrum.
+    \item A template for emission of the host galaxy.
+    \item A template for the accretion disc plus X-ray corona emission.
+    \item The $\gamma$-ray and neutrino bands.
+\end{enumerate}
+
+Thus, the objective of this work will be to construct a model which can ``shift'' the energies from the neutrino spectrum to a distribution which is in agreement with the data points presented by Fermi and MAGIC.
+
+\vspace{-2cm}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{Figures/NGC1068_SED.png}
-    \caption{The SED of NGC 1068, showing the expected gamma-ray and neutrino emission.}
+    \includegraphics[width=\textwidth]{Figures/NGC1068_SED.pdf}
+    \caption{The integrated multi-messenger SED of NGC 1068, assembled using the
+    SED builder at the SSDC (\url{https://tools.ssdc.asi.it/SED/}), showing the power emitted at different frequencies/energies; various components are highlighted. Note that the SED tool provides multiple values at the same frequency, which reflect the different resolutions used by the facilities which have studied the source on various spatial scales. For clarity we have kept mainly the highest flux values, which are associated with the largest scales, since the SED is dominated by the host galaxy given its relatively small distance. Figure taken from \cite{padovani2024highenergyneutrinosvicinitysupermassive}}
     \label{fig:NGC1068_SED}
-
-
-
+\end{figure}
 
 %The background section should give sufficient background information to give the reader an overview of the state-of-the-art research field in which you work.
 

@@ -5,7 +5,7 @@
 \ChNameVar{\Large\rm\bfseries} % Set name to serif, bold
 \usepackage{fancyhdr} %to customize the headers
 \fancyhead{\nouppercase}
-%\usepackage[lmargin=1in, rmargin=1in, tmargin=1.5in, bmargin=1.3in]{geometry} %sets the margins for the pages
+\usepackage[lmargin=1in, rmargin=1in, tmargin=1.5in, bmargin=1.3in]{geometry} %sets the margins for the pages
 \setcounter{tocdepth}{2} %table of contents number depth for subsections (2 = x.x.x)
 \setcounter{secnumdepth}{4} %numbering depth for headers for subsections in the text(4 = x.x.x.x)
 \usepackage{url} %to include urls
@@ -56,7 +56,32 @@
     \addtocounter{page}{-1}
     \newpage
     } %sets new page command to insert an empty page without adding to the page counter or having a page number
-
+    \makeatletter
+    \renewcommand*{\@makechapterhead}[1]{%
+      \vspace*{0\p@}%
+      {\parindent \z@ \raggedright \normalfont
+        \ifnum \c@secnumdepth >\m@ne
+          \if@mainmatter%%%%% Fix for frontmatter, mainmatter, and backmatter 040920
+            \DOCH
+          \fi
+        \fi
+        \interlinepenalty\@M
+        \if@mainmatter%%%%% Fix for frontmatter, mainmatter, and backmatter 060424
+          \DOTI{#1}%
+        \else%
+          \DOTIS{#1}%
+        \fi
+      }}
+    % For the case \chapter*:
+    \renewcommand*{\@makeschapterhead}[1]{%
+      \vspace*{10\p@}%
+      {\parindent \z@ \raggedright
+        \normalfont
+        \interlinepenalty\@M
+        \DOTIS{#1}
+        \vskip 40\p@
+      }}
+    \makeatother
 
 
 
@@ -129,8 +154,7 @@ Department of Physics \\
 \input{Chapters/Introduction}
 \input{Chapters/Active Galactic Nuclei}
 \input{Chapters/The Model}
-%\input{Chapters/06Method}
-%\input{Chapters/07Results}
+\input{Chapters/Results}
 %\input{Chapters/08Discussion}
 %\input{Chapters/09Conclusion}
 

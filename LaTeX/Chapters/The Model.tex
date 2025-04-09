@@ -3,7 +3,7 @@
 
 \section{Theory}
 
-We are interested in connecting the interaction rate of photons with energy $E$ to the pair-production cross section $\sigma_{\text{pair}}(s)$ and the spectral density of background photons $n_{\gamma}(\varepsilon)$. We can do so in the following manner\begin{equation}
+We are interested in connecting the interaction rate of photons with energy $E$ to the pair-production cross-section $\sigma_{\text{pair}}(s)$ and the spectral density of background photons $n_{\gamma}(\varepsilon)$. We can do so in the following manner\begin{equation}
     R_{\gamma}(E) = \frac{1}{2}\int_{0}^{\infty}d\varepsilon \,n_{\gamma}(\varepsilon)\int_{-1}^{1}d\mu\,(1-\mu)\,\sigma_{\text{pair}}(s)\,\Theta(s-s_{\min}),
     \label{eq:interaction_rate_first_one}
 \end{equation} where $s_{\min}$ is the threshold energy for pair production ($s_{\min} = 4m_e^2$ in this case, $m_e$ being the mass of an electron), and $\Theta(s-s_{\min})$ is the Heaviside step function. It is there to ensure we only integrate over energies above the threshold. The pair-production cross-section $\sigma_{pair}(s)$ is well-known, and is given by the equation
@@ -16,9 +16,6 @@ We are interested in connecting the interaction rate of photons with energy $E$ 
 
 From equation \eqref{eq:interaction_rate_first_one}, it is convenient to rewrite the integrals in terms of the mandelstam variable $s$, and swap the order of integration. Doing so, we get the following:
 
-
-\newpage
-
 \begin{equation*}
     R_{\gamma}(E) = \frac{1}{8E^2}\int_{0}^{\infty}\frac{d\varepsilon}{\varepsilon^2}\,n_{\gamma}(\varepsilon)\int_{s_{min}}^{4E\varepsilon}ds\,s\,\sigma_{pair}(s) =
     \label{eq:interaction_rate_second_one}
@@ -30,30 +27,17 @@ From equation \eqref{eq:interaction_rate_first_one}, it is convenient to rewrite
 \end{equation}
 Notice that for a given s, we have $s \leq 4E\varepsilon$, which implies that $\varepsilon \geq \frac{s}{4E}$. This is the reason for the lower limit of the $\varepsilon$-integral. The upper limit of the $\varepsilon$-integral is $\varepsilon_{max}$, which is the maximum energy of our background photons.
 
-In order to find this interaction rate of photons with energy E, we need to know the spectral density of background photons $n_{\gamma}(\varepsilon)$. In order to derive this quantity, we first neede to know what the spectral energy distribution of background photons looks like. \citet{Eichmann_2022} used in their work a spectrum of background photons for the starburst and X-ray corona region, which can be seen in Fig. 5 of their paper.
+In order to find this interaction rate of photons with energy E, we need to know the spectral density of background photons $n_{\gamma}(\varepsilon)$. In order to derive this quantity, we first need to know what the spectral energy distribution of background photons looks like. \citet{Eichmann_2022} used in their work a spectrum of background photons for the starburst and X-ray corona region. I will use this background spectrum to model the density of background photons $n_{\gamma}(\varepsilon)$:
 
-I will use this background spectrum to model the density of background photons $n_{\gamma}(\varepsilon)$. In figure \ref{fig:background_spectral_density}, I have represented the data from \citet{Eichmann_2022} as black dots and triangles, to get an idea of the rough shape of the SED. The two main components of the SED can be seen, one for the starburst region, which is modeled by Planck's Law (which I have fitted onto the data), and one for the X-ray corona region.
 
 \begin{figure}[H]
+    \includegraphics[width=\textwidth]{Figures/fit5b2_SED_details.pdf}
     \centering
-    \includegraphics[width=\textwidth]{Figures/Background_SED_AGN.pdf}
-    \caption{Spectral Energy Distribution of the background photons inside the AGN of NGC 1068, with the fitted Planck's Law for the starburst region and the piecewise function for the flux of background photons.} 
+    \caption{The model predictions of the \emph{photon and neutrino} SED of NGC\,1068 with respect to the data---red markers refer to a beam size of $\sim (0.02-0.06)\,\text{arcsec}$, and black or blue markers indicate a beam size of $\gtrsim 10\,\text{arcsec}$. The light red area shows the free-free emission from the extended corona. The dark grey area indicates the \emph{internal} flux of the background (target) photon fields (disk- and torus emission as well as Comptonized X-rays of the AGN corona) of the central AGN and the light grey area indicates the thermal IR emission by dust grains of the starburst region. Note that the torus attenuation is not taken into account here. Figure taken from \citet{Eichmann_2022}.} 
     \label{fig:background_spectral_density}
 \end{figure}
 
-Using these two regions, I have constructed a rough piecewise function for the differential flux of background photons $\Phi(\varepsilon)$ (the red line in figure \ref{fig:background_spectral_density}), which is given by the following equation
-
-\begin{equation}
-    \label{eq:piecewise_phi}
-    \Phi(\varepsilon) = \left\{
-    \begin{array}{ll}
-        10^{9.7}\,\varepsilon^2 & \text{, } 10^{-6} \leq \varepsilon \leq 4.3 \times 10^{-2} \, \text{eV}\\
-        10^{3.9}\,\varepsilon^{-2.25} & \text{, } 4.3 \times 10^{-2} \leq \varepsilon \leq 2.6 \times 10^{5} \, \text{eV}\\
-        10^{35}\,\varepsilon^{-8} & \text{, } 2.6 \times 10^{5} \leq \varepsilon \leq 10^{8} \, \text{eV}\\
-        
-    \end{array}
-    \right.
-\end{equation}
+I will use the red line marked as $\gamma \text{ (corona)}$ in the legend of the figure above to model the spectral density of background photons $n_{\gamma}(\varepsilon)$\footnote{It is important to note the circular reasoning here. Ideally, the cascaded spectrum should be used to simulate the cascading of the same particles. However, for simplicity, I will assume the aforementioned to be the pre-existing spectrum within the corona.}.
 
 $n_{\gamma}(\varepsilon)$ can be connected to $\Phi(\varepsilon)$ in the following manner: we know that the differential flux of background photons relates to the specific intensity $I(\varepsilon)$ by
 
@@ -67,7 +51,7 @@ For a spherical source of radius $R$ at a distance $d$, $\Omega = \pi \left(\fra
 We can also connect $I(\varepsilon)$ to the spectral density of background photons $n_{\gamma}(\varepsilon)$ using
 
 \begin{equation}
-    n_{\gamma}(\varepsilon) = \frac{4\pi}{c}I(\varepsilon)
+    n_{\gamma}(\varepsilon) = \frac{4\pi}{c}I(\varepsilon),
     \label{eq:n_phi}
 \end{equation} where $c$ is the speed of light. By combining equations \eqref{eq:flux_specific_intensity} and \eqref{eq:n_phi}, we can find the spectral density of background photons $n_{\gamma}(\varepsilon)$ in terms of $\Phi(\varepsilon)$
 \begin{equation}
@@ -76,7 +60,71 @@ We can also connect $I(\varepsilon)$ to the spectral density of background photo
 \end{equation}
 where $d$ is the distance to the AGN, and $R$ is the radius of the corona.
 
-For this work, I will assume that the distance to NGC1068 is $d = 10.1$ Mpc, and the radius of the corona is $R = 7 \times 10^{-5}$ pc. These values come both from \citet{padovani2024highenergyneutrinosvicinitysupermassive}. The coronal radius can be parametrized as $R = \eta R_s$, with $\eta \sim 10 - 100$ (I shall assume $\eta = 50$), and $R_s$ being the Schwartzschild radius of the black hole, calculated to be around $1.4 \times 10^{-6}$ pc.
+For this work, I will assume that the distance to NGC1068 is $d = 10.1$ Mpc. This value comes from \citet{padovani2024highenergyneutrinosvicinitysupermassive}. The coronal radius can be parametrized as $R_c = \eta R_s$, with $\eta \sim 10 - 100$, and $R_s$ being the Schwartzschild radius of the black hole, calculated to be around $1.4 \times 10^{-6}$ pc.
+
+A useful quantity to calculate is the optical depth of the corona. This relates to the probability of a photon with a certain energy interacting trough pair production. The optical depth $\tau$ is given by 
+\begin{equation*}
+    \tau = R_{\gamma} \cdot  R_c,
+\end{equation*}
+
+In figure \Ref{fig:optical_depth_as_function_of_corona_radius}, I have represented the optical depth of the corona as a function of the energy of the photons for different values of $R_c$
+
+\begin{figure}[ht]
+    \includegraphics[width=0.8\textwidth]{Figures/OpticalDepths.pdf}
+    \centering
+    \caption{Optical depth of NGC1068's corona as a function of the energy of the photons. Represented for different values of the corona radius. One can see that the corona is optically thick for high-energy photons, and optically thin for low-energy photons. This means that high-energy photons are more likely to interact with the corona.}
+    \label{fig:optical_depth_as_function_of_corona_radius}
+\end{figure}
+
+
+\section{Implementation}
+
+The implementation of this model was done in MATLAB. The code is available in appendix A. The code is structured in the following way:
+
+\begin{itemize}
+    \item The first part of the code is dedicated to defining the constants and data of the model. Here, relevant information such as the Fermi-LAT and IceCube data is loaded. However, as we want to test the model for different values of certain parameters, these don't get defined here.
+    \item Next, inside nested loops, the different parameters for which we want to test our model are defined. These include the corona radius, the maximum turning angle of the particles and the alpha value, which controls the initial distribution of photons.
+    \item Now, the code calculates the interaction rate of photons with energy $E$ using the equations derived in the theory section. This is done for different values of the corona radius, and the results are stored in a matrix.
+    \item Finally, the code calculates the cascading of photons in the corona, and plots the results for the parameters defined. It is assumed that the photons produced in the corona have the same energy distribution as that of the neutrinos we receive. 
+    This part is very intricate, and has different steps to it. These steps are detailed in section \ref{sec:RandomWalk}.
+\end{itemize}
+
+\section{The Random Walk}
+\label{sec:RandomWalk}
+
+There are several parameters which affect the cascading of photons in the corona. These include the corona radius, the maximum turning angle of the particles and the alpha value, which controls the initial distribution of photons. The random walk is a stochastic process, and as such, it is important to consider the different steps of the process it is implemented in the following way:
+
+For each energy bin, a number of particles which is proportional to the flux at said energy is chosen to simulate. The particles are chosen according to the formula
+\begin{equation}
+    \#_{\text{part.}}=\left\lfloor \rho \frac{\Phi_E \Delta_E}{\min(\Phi_E \Delta_E)} \right\rceil,
+\end{equation}
+$\Phi_E$ and $\Delta_E$ being the flux and bin width as a function of the energy. The latter of the two, as I've already mentioned, can be increased to reduce statistical noise. The numerator is divided by its minimum to ensure normalization: this way we ensure we simulate just one particle for the lowest flux. Finally, $\rho$ is a multiplicative factor, which can be changed to modify the overall number of particles we want to simulate. The program then rounds the resulting value to the nearest integer, giving the number of particles for each energy bin.
+
+For each particle:
+\begin{enumerate}
+\item The initial position is randomly placed inside the corona using a power law of the shape
+\begin{equation}
+r = R_c \cdot \text{rand}^{(1/\alpha)}.
+\end{equation}
+\begin{figure}[ht]
+    \includegraphics[width=\textwidth]{Figures/InitialDistributions.pdf}
+    \centering
+    \caption{Initial distributions of the photons for different values of $\alpha$. The y-axis shows the percentage of photons, and the x-axis shows the distance from the center of the corona.}
+    \label{fig:initial_distributions}
+\end{figure}
+
+\item Each particle is assigned a random initial direction, uniformly distributed inside a sphere
+\item The particle propagates until it exits the corona. Each step it takes has a length determined by
+\begin{equation}
+L = -\frac{\ln (\text{rand})}{R},
+\end{equation}
+where $R$ is the interaction rate previously calculated as a function of the energy of the photon.
+\item After each collision, the particle's direction is updated. The new direction is determined by a random angle $\theta$ sampled from a uniform distribution between $-\theta_{\max}$ and $\theta_{\max}$\footnote{This is a simplification of the actual process. In reality, in order to achieve truly random directions (not biased towards the poles), the program generates uniformly distributed points on a spherical cap of max angle $\theta_{\max}$ around the z axis, which is then rotated to the previous direction. The random point selected becomes the new direction of the particle. The Manim folder inside the GitHub repository contains a visualization of this process.}.
+\item The particle's energy is multiplied by a random fraction sampled from a predefined probability distribution. The probability distribution is defined in the code, and can be changed to test different distributions. The default one is a gaussian distribution with a mean of 0.5 and a standard deviation of 0.01. This essentially means that the energy of the particle is multiplied by a random value between 0.49 and 0.51.\footnote{Here, another simplification is made. When two photons produce a pair and $E\varepsilon/m_e^2c^4\gg1$, $f\approx [\ln(2E\varepsilon/m_e^2c^4)]^{-1}$. However, if $E\varepsilon/m_e^2c^4\sim 1$, $f=0.5$. Thus, it is assumed that $\varepsilon \sim m_e^2c^4/E$.}
+\item In order to account for the energy lost in the process, which is transferred to the background photons, the program assumes that in every step a new particle is created with the exact same energy as the original photon, which cascades in the same way. Meaning we end up with $2^N$ particles with the same energy, $N$ being the number of collisions in the cascade\footnote{This is another approximation. In reality, one should consider the full cascade of each newly produced particle individually. However, this would increase computational costs exponentially.}.
+\item Finally, in order to determine the flux as a function of the energy (proportional to the number of particles), the particles are binned logaritmically with spacing which is also specified in the program, and can be changed to reduce statistical noise, in turn reducing the need for computating a high number of particles.
+ 
+\end{enumerate}
 
 
 

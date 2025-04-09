@@ -1,15 +1,19 @@
 % Parameters
 Rmax = 30;              % Maximum radius of the sphere
 n = 10000;              % Number of points per distribution
-alphas = [0.01, 0.1, 0.5, 1, 3, 5, 10];     % Different alpha values to explore
+alphas = [0, 0.01, 0.1, 0.5, 1, 3, 5, 10];     % Different alpha values to explore
 figure;
 for i = 1:length(alphas)
     alpha = alphas(i);
-    
+    if alpha == 0
+        u = zeros(n, 1);
+    else
     % Generate random numbers for the radial distribution
-    u = rand(n, 1);
+        u = rand(n, 1);
+    end
     % Inverse transform sampling: r = Rmax * u^(1/alpha)
     r = Rmax * u.^(1/alpha);
+    
     
     % Generate uniformly distributed directions on the sphere.
     % One common method:
@@ -23,13 +27,14 @@ for i = 1:length(alphas)
     z = r .* cos(phi);
     
     % Plot the points in a subplot
-    subplot(2, 4, i);
-    scatter3(x, y, z, 1, r, 'filled', ''); % color points by z for visual depth
-   
+    %subplot(2, 4, i);
+    %scatter3(x, y, z, 1, r, 'filled', ''); % color points by z for visual depth
+    histogram(r)
+    hold on;
     axis equal;
     xlabel('x');
     ylabel('y');
-    zlabel('z');
-    title(['\alpha = ' num2str(alpha)]);
+    %zlabel('z');
+    %title(['\alpha = ' num2str(alpha)]);
 end
 sgtitle('Effect of \alpha on the 3D Distribution of Points');
