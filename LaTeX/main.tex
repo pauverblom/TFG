@@ -1,6 +1,5 @@
-\documentclass[a4paper, 12pt, oneside]{book} % Here you chose the paper size and font size. Te command onside ensures that pages are not shifted left and right (as is common for printed books). 
+\documentclass[a4paper, 12pt, oneside]{book} % Here you chose the paper size and font size. The command onside ensures that pages are not shifted left and right (as is common for printed books).
 \usepackage[utf8]{inputenc} % Added to manage special characters, like Norwegian letters
-\usepackage[T1]{fontenc} % To manage special characters
 \usepackage[Lenny]{fncychap} % fancy chapter style (many more available, like Sonny, Bjarne, etc)
 \ChNameVar{\Large\rm\bfseries} % Set name to serif, bold
 \usepackage{fancyhdr} %to customize the headers
@@ -37,6 +36,17 @@
     urlcolor=black
 }
 
+% Define journal abbreviations if needed (e.g., from .bib file)
+\def\aj{AJ} % Astronomical Journal
+\def\apj{ApJ} % Astrophysical Journal
+\def\apjl{ApJL} % Astrophysical Journal, Letters
+\def\apjs{ApJS} % Astrophysical Journal, Supplement
+\def\aap{A\&A} % Astronomy and Astrophysics
+\def\mnras{MNRAS} % Monthly Notices of the RAS
+\def\nat{Nature} % Nature
+\def\prl{Phys. Rev. Lett.} % Physical Review Letters
+% Add other definitions as needed based on your bibliography entries
+
 % Here you can customize the look of your citations and bibliography
 \usepackage[backend = biber,
             natbib = true, % Adding the natbib style. This will enable the use of \citet and \citep
@@ -46,6 +56,7 @@
 % Declare the bibliography resource
 % (which you might want to connect to
 % for example Zotero)
+
 \addbibresource{bibliography.bib}
 \usepackage{comment} %to be able to comment out sections in the .tex files
 \usepackage{afterpage} %to customize page commands such as below
@@ -84,7 +95,6 @@
     \makeatother
 
 
-
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{comment}
@@ -99,17 +109,16 @@
 \noindent  \textcolor{gray}{\large Pau Verdeguer Blom-Dahl} \\
 \vspace{1cm}
 
-\noindent \textbf{\Large Interaction of High-Energy Gamma Radiation in the Active Galactic Nucleus of NGC 1068} \\
+\noindent \textbf{\Large On the Interaction of High-Energy Gamma Radiation in the Active Galactic Nucleus of NGC 1068} \\
 \vspace{0.5cm}
 
 \noindent {\large A Theoretical and Computational Study.} \\
 
 
-
 \vspace{7cm}
-\noindent Physics Project\\
-Supervisor: Michael Kacherließ \\
-April 2025 \\
+\noindent Bachelor's Thesis\\
+Supervisor: Michael Kacherlie\ss \\
+May 2025 \\
 
 \vspace{0.2cm}
 \noindent Norwegian University of Science and Technology \\
@@ -131,19 +140,25 @@ Department of Physics \\
 
 %add an empty non-counted page by the command below in order to get the first chapter on the left hand side, if needed (check your page number so that the first chapter is on an odd page)
 
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Preface} 
+\input{Chapters/Preface}
+
+\tableofcontents
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Customize the layout of the main content of your thesis
 
-%\pagestyle{fancy} %set customized page style for header
+\pagestyle{fancy} %set customized page style for header
 %\fancyhf{} %clear header and footer fields
-%\renewcommand{\headrulewidth}{0pt} %set to no rule
-%\fancyhead[LE, RO]{\thepage} %set the page number at left for even, right for odd pages
-%\fancyhead[RE, LO]{\leftmark} %set the chapter name at right for even, left for odd pages
+\renewcommand{\headrulewidth}{0pt} %set to no rule
+%\fancyhead[LO, RO]{\thepage} %set the page number at left for even, right for odd pages
+\fancyhead[L]{\leftmark} %set the chapter name at right for even, left for odd pages
 %is is possible to design the header with the chapter as you wish, e.q. only the chapter or only the name, all lowercase instead etc.
 %you could also design the footer if you wish, for example:
-%\fancyfoot[LE, RO]{\thepage}
-%\setlength{\headheight}{14.49998pt} %set the header height
+
+\setlength{\headheight}{14.49998pt} %set the header height
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -155,13 +170,13 @@ Department of Physics \\
 \input{Chapters/Active Galactic Nuclei}
 \input{Chapters/The Model}
 \input{Chapters/Results}
-%\input{Chapters/08Discussion}
+\input{Chapters/Outlook}
 %\input{Chapters/09Conclusion}
 
 \addcontentsline{toc}{chapter}{\protect\numberline{}References}
 \printbibliography[title={References}] % you may change the title in the toc here if you want
 \cleardoublepage
 
-\input{Chapters/10Appendix}
+\input{Chapters/Appendix}
 
 \end{document}

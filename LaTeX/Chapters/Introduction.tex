@@ -1,32 +1,31 @@
 \chapter{Introduction}
 \label{chap:Introduction}
 
-Active Galactic Nuclei (AGN) are among the most energetic and luminous objects in the universe. They are powered by the accretion of matter onto supermassive black holes at the centers of galaxies, leading to the emission of radiation across the electromagnetic spectrum. 
+AGNs are among the most energetic and luminous objects in the universe. They are powered by the accretion of matter onto supermassive black holes at the centers of galaxies, leading to the emission of radiation across the entire electromagnetic spectrum \citep{RadiativeProcesses}.
 
-These mysterious objects have captured the interest of astronomers and astrophysicists for decades due to their complex and dynamic nature. Understanding the physical processes that drive the emission of radiation from AGN is crucial for unraveling the mysteries of the universe and the fundamental laws of physics.
+These objects have captured the interest of astronomers and astrophysicists for decades due to their complex nature. Understanding the physical processes that drive the emission of radiation from AGNs is essential for unraveling the mysteries of the universe and the fundamental laws of physics.
 
 \section{Motivation}
 
-In recent years, there has been a growing interest in the role that neutrinos play in high-energy astrophysical phenomena. Among these, AGNs have been identified as significant sources of high-energy particles, including gamma-rays and neutrinos. 
+In recent years, there has been a growing interest in the role that neutrinos play in high-energy astrophysical phenomena \citep{Eichmann_2022}. Among these, AGNs have been identified as significant sources of high-energy particles, including gamma-rays and neutrinos. 
 
-One particular AGN, NGC 1068, has attracted attention due to its distinctive gamma-ray emission profile. Data from the IceCube collaboration \citep{IceCube2022} and \textit{Fermi} indicate that, although the gamma-ray luminosity is expected to be comparable to the neutrino luminosity produced in the same region, the observed gamma-ray luminosity for the GeV - TeV region is significantly lower than expected, as can be seen on fig. 1 of \citet{padovani2024highenergyneutrinosvicinitysupermassive}
+One particular AGN, that of NGC 1068, has attracted attention due to its distinctive gamma-ray emission profile. Data from the IceCube collaboration \citep{IceCube2022} and Fermi-LAT \citep{Fermi12yeardata} indicate that, although the gamma-ray luminosity is expected to be comparable to the neutrino luminosity produced in the same region \citep{GammaRayModel2023}, the observed gamma-ray luminosity in the GeV - TeV region is significantly lower than expected, as can be seen on Fig. \Ref{fig:NGC1068_SED}.
 
-There are several reasons why the observed gamma-ray flux is lower than one might naively expect from the neutrino flux (as seen by IceCube):
+The main mechanism why the observed gamma-ray flux is lower than one might naively expect from the neutrino flux (as seen by IceCube) can be expressed in the following manner:
 
 \begin{itemize}
-    \item \textbf{Internal Absorption:} High-energy gamma rays interact with ambient background photons in AGNs, producing electron–positron pairs and reducing the escaping gamma-ray flux.
-    \item \textbf{Electromagnetic Cascading:} These pairs initiate electromagnetic cascades, redistributing energy to lower ranges, often outside the detection capabilities of instruments like Fermi or MAGIC.
+    \item \textbf{Internal Absorption:} High-energy gamma rays produced within the corona interact with ambient photons via pair production $(\gamma\gamma \rightarrow e^+e^-)$.
+    \item \textbf{Electromagnetic Cascading:} These pairs initiate electromagnetic cascades, suffering energy losses via inverse Compton scattering off other background photons and synchrotron radiation, redistributing their energy to lower ranges.
 \end{itemize}
 
-The motivation for this project stems from the aforementioned discrepancy between the expected and observed gamma-ray luminosity in NGC 1068. By developing a detailed model of the gamma-ray emission processes in this AGN, I aim to explore the underlying mechanisms responsible for this disparity. This includes examining internal absorption effects, electromagnetic cascading, and other potential factors that could influence the gamma-ray flux. Through this research, I seek to enhance our understanding of the high-energy phenomena in AGNs and contribute to the broader knowledge of cosmic particle acceleration and emission mechanisms.
-
+This project's motivation arises from the aforementioned discrepancy between expected and observed fluxes of gamma rays coming from the AGN of NGC 1068. Developing a model to account for the interaction that these kinds of radiation suffer in the AGN will be the main goal of this work. By simulating these interactions, I seek to deepen our comprehension of the high-energy phenomena in AGNs and contribute to the understanding of the mechanisms that govern the emission of gamma rays and neutrinos in these extreme environments.
 
 \section{Objectives}
 
-The primary objective of this project is to investigate the gamma-ray emission processes in the active galactic nucleus of NGC 1068 and explore the factors that influence the observed gamma-ray flux. To achieve this goal, the following specific objectives have been defined:
+A series of goals have been defined to guide the research process throughout this project:
 
 \begin{itemize}
-    \item Develop a detailed model of the gamma-ray emission processes in the active galactic nucleus of NGC 1068, utilizing an elaborate 3D Random Walk simulation.
-    \item Investigate the impact of internal absorption and electromagnetic cascading on the observed gamma-ray flux and its spectrum, through the implementation of relevant physical processes in the model.
-    \item Compare the model predictions with observational data from the IceCube and Fermi collaborations, and assess the agreement between the two. 
+    \item Develop a physical model incorporating internal absorption and electromagnetic cascading to simulate the propagation of high-energy gamma rays through the AGN environment.
+    \item Implement a realistic simulation of gamma-ray cascades in the AGN of NGC 1068, based on real physical phenomena, using a 3D Random Walk approach to simulate their interactions with the particles in the region.
+    \item Compare the simulation results with observational data from the IceCube and Fermi-LAT collaborations to evaluate the model's accuracy and its consistency with the measured gamma-ray and neutrino spectra.
 \end{itemize}

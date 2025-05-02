@@ -4,7 +4,7 @@ clear;
 mass_electron = 0.511e6;                        % Electron rest mass [eV]
 schwarzschild_radius = 1.4e-6;                  % Schwarzschild radius [pc]
 distance = 10.1e6;                              % Distance to NGC 1068 [pc]
-particle_multiplicity = 500;                     % Minimum particle multiplier
+particle_multiplicity = 20;                     % Minimum particle multiplier
 bin_slope = 0.011570650269349 + 0.25;
 bin_offset = 0;
 
@@ -53,10 +53,14 @@ E_squared_times_flux_fermi = fermi_data(:,2) * 6.242e11; % [eV cm^{-2} s^{-1}]
 
 %% Define parameter ranges to loop over
 %corona_mult_values = [1,2,3,4,5,6,7,8,9,10,11,13,15,18,20,25,30,35,40,50,60,70,80,90,100];    % Example corona_multiplicity values
-max_angle_values   = [pi];     % Example max_angle values (in radians)
-%alpha_values       = [0,0.01];         % Example alpha values
-corona_mult_values = [17];
-alpha_values = [0];
+max_angle_values   = pi;     % Example max_angle values (in radians)
+%alpha_values       = [0,0.01]; 
+% Example alpha values
+
+values = [0.1,57.55];
+alpha_values = values(1);
+corona_mult_values = values(2);
+
 
 nums_particles = round(flux_neutrinos_best_fit .* deltaE / (min(flux_neutrinos_best_fit .* deltaE)) * particle_multiplicity);
 
@@ -246,9 +250,9 @@ for cm = corona_mult_values
             
             %% SAVE THE DATA FOR SURFACE FITTING
 
-            
-            writematrix([E_centers; simulated_flux .* E_centers.^2]',sprintf('data/corona_%d_angle_%.2f_alpha_%.2f.csv', corona_multiplicity, max_angle, alpha))
-
+            filepath = sprintf('data/corona_%.2f_angle_%.2f_alpha_%.2f.csv', corona_multiplicity, max_angle, alpha);            
+            writematrix([E_centers; simulated_flux .* E_centers.^2]',filepath)
+            fprintf('Data Saved: %s \n', filepath)
 
 
 

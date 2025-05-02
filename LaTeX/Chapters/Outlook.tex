@@ -1,0 +1,40 @@
+\chapter{Outlook}
+\label{chap:Outlook}
+
+This work has explored the discrepancy between the observed high-energy neutrino flux and the suppressed gamma-ray flux from NGC 1068 by developing a model centered on electromagnetic cascading within the AGN corona. Using a combination of random walk simulations and machine learning techniques, it was demonstrated that such cascades can indeed reproduce the observed gamma-ray attenuation while constraining the physical parameters of the corona, notably finding a preferred region around $R_c/R_s \approx 13$ and $\alpha \approx 0.6$. Furthermore, the model predicts a characteristic reprocessing signature: an excess of lower-energy gamma rays in the MeV range.
+
+While the model successfully captures key aspects of the phenomenon, several simplifications and approximations were made, opening avenues for future refinement and investigation.
+
+\section{Model Refinements}
+
+The current implementation of the random walk includes several approximations, which could be addressed in more refined models:
+
+\begin{itemize}
+    \item \textbf{Scattering and Energy Loss:} The assumption of isotropic scattering and a fixed energy loss fraction (approximately 50\%) per interaction simplifies the complex physics of pair production and subsequent particle interactions. Implementing more realistic, energy-dependent differential cross-sections for scattering and a more detailed treatment of energy partitioning in pair production and inverse Compton scattering by the created pairs would enhance the model's fidelity.
+    \item \textbf{Cascade Development:} The current approach approximates the cascade by multiplying the escaping particle count based on the number of collisions, rather than explicitly tracking all secondary electrons and positrons, which subsequently perform cascades of their own. A full Monte Carlo simulation tracking all generations of particles, including their potential energy losses via synchrotron radiation and inverse Compton scattering within the corona's magnetic and photon fields, would provide a more accurate picture of the cascade development and the resulting energy spectrum.
+    \item \textbf{Magnetic Field and Geometry:} The influence of the magnetic fields inside the AGN is currently not accounted for in the model. Incorporating magnetic field geometries could affect particle trajectories and introduce synchrotron losses for the electron-positron pairs, potentially altering the cascade dynamics and escape probabilities. Similarly, assuming a simple, homogeneous spherical corona with an isotropic distribution of background radiation might be an oversimplification.
+    \item \textbf{Background Photon Field:} The model relies on a static background photon field derived from previous studies (as shown in Figure \ref{fig:background_spectral_density}), with the caveat of potential circular reasoning noted in Chapter \ref{chap:The Model}. A self-consistent approach, where the cascaded photon spectrum iteratively informs the background field for subsequent calculations, could capture feedback effects (although this would significantly increase computational complexity).
+\end{itemize}
+
+\section{Computational Enhancements}
+
+The reliance on a neural network to explore the parameter space, while necessary due to computational costs, introduced certain artifacts, such as the low-energy "tail" in predictions for high-MSE fits (Figure \ref{fig:selected_simulations_plot}). Future work could explore:
+
+\begin{itemize}
+    \item \textbf{Advanced Machine Learning:} Utilizing different network architectures, loss functions beyond MSE that might better capture spectral shape, or alternative machine learning techniques could potentially mitigate prediction artifacts and improve the accuracy of parameter inference. Training strategies could also be refined to reduce reliance on synthetic data.
+    \item \textbf{Computational Efficiency:} Even though a good portion of the time was spent optimizing the simulation code, there are lots of ways in which this section of the work could be improved. Implementing GPU acceleration, in order to simulate more particles in parallel, could allow for running more detailed simulations (e.g., full secondary tracking) over a wider range of parameters, reducing the dependence on machine learning interpolation.
+\end{itemize}
+
+\section{Future Observational Tests}
+
+The model makes specific predictions that are potentially testable with current and future observational facilities:
+
+\begin{itemize}
+    \item \textbf{The MeV Excess:} The most distinct prediction is the pile-up of reprocessed photons in the $10^6 - 10^8$ eV (1-100 MeV) range. While challenging to observe due to high backgrounds and instrumental limitations, future proposed MeV gamma-ray telescopes (such as concepts like AMEGO-X \citep{segarro} or e-ASTROGAM \citep{astrogramillos}) could potentially detect or constrain this signature, providing strong validation (or refutation) of the cascade scenario. Continued analysis of Fermi-LAT data in this range might also yield constraints.
+    \item \textbf{Coronal Constraints:} The derived coronal size ($R_c/R_s \approx 13$) could be indirectly tested. High-resolution X-ray spectroscopy (e.g., with XRISM or future missions like Athena) might probe the conditions and extent of the hot coronal gas through spectral line analysis or reverberation mapping. Similarly, advancements in millimeter VLBI could potentially resolve structures on scales approaching the predicted coronal size for nearby AGN like NGC 1068.
+    \item \textbf{Variability Studies:} Correlated variability studies between X-ray emission (probing the corona) and gamma-ray/neutrino emission could provide insights into the location and dynamics of the particle acceleration and interaction regions, further constraining the model parameters.
+    \item \textbf{Application to Other Sources:} Applying this modeling framework to other AGN detected or suspected as neutrino sources (e.g., TXS 0506+056 \citep{2018p}) would test the generality of the model and the derived relationships between coronal properties and multi-messenger emission.
+\end{itemize}
+
+In summary, while this work provides a viable (although simplified) framework for understanding the gamma-ray suppression in NGC 1068 through electromagnetic cascading, further theoretical refinements and observational campaigns, particularly in the MeV gamma-ray band, could shed more light onto how the complex environment of AGNs actually operates.
+

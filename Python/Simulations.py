@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import os
 
 # Define the values for corona, angle, and alpha
-corona_values = ['1', '10', '50']
+corona_values = ['1.00', '10.00', '50.00']
 angle_values = ['0.00', '1.57', '3.14']
-alpha_values = ['0.0', '0.1', '1.0']
+alpha_values = ['0.00', '0.10', '1.00']
 
 # Base directory for the data files
 base_dir = '/Users/pauverdeguer/TFG/MATLAB/'
@@ -40,10 +40,10 @@ for i, alpha in enumerate(alpha_values):
 
         ax.errorbar(fermidatapointsx, fermidatapointsy, yerr=fermidatapointsyerr, marker='.', linestyle = ' ', color='k', label='Fermi')
         ax.errorbar(fermidataupperlimsx, fermidataupperlimsy, yerr=0.1*fermidataupperlimsy, uplims=True, linestyle=' ', color='k')
-        ax.loglog(icecubex, icecubey, label='IceCube', color='b')
+        ax.loglog(icecubex, icecubey, label='IceCube', color='purple')
         ax.fill_between(icecubex, icecubelowerlimit, icecubeupperlimit, color='b', alpha=0.2)
-        ax.loglog(icecubex, icecubelowerlimit, color='b', linestyle='-', alpha=0.5)
-        ax.loglog(icecubex, icecubeupperlimit, color='b', linestyle='-', alpha=0.5)
+        ax.loglog(icecubex, icecubelowerlimit, color='purple', linestyle='-', alpha=0.5)
+        ax.loglog(icecubex, icecubeupperlimit, color='purple', linestyle='-', alpha=0.5)
 
         for angle in angle_values:
             datafilename = f'data/corona_{corona}_angle_{angle}_alpha_{alpha}.csv'
@@ -68,7 +68,10 @@ for i, alpha in enumerate(alpha_values):
 
         # Create a log-log plot in the appropriate subplot
         
-        
+        ax.grid(True, which='major', linestyle='--', linewidth=0.5)
+        ax.set_yticks([1e-3, 1e-1, 1e1, 1e3])
+        ax.set_xticks([1e4, 1e7, 1e10, 1e13])
+        ax.tick_params(which='minor', bottom=False, left=False)
         ax.set_title(rf'$R_c/R_s=${corona}, $\alpha=${alpha}')
         ax.set_xlabel(r'$E$ [eV]')
         ax.set_ylabel(r'$E^2 dN/dE$ [eV cm$^{-2}$ s$^{-1}$]')

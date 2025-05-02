@@ -34,13 +34,13 @@ icecubeupperlimit = icecubedata[:, 3] * 1e12
 
 plt.errorbar(fermidatapointsx, fermidatapointsy, yerr=fermidatapointsyerr, marker='o', linestyle=' ', color='k', label='Fermi Data', linewidth=2, markersize=8)
 plt.errorbar(fermidataupperlimsx, fermidataupperlimsy, marker='o', yerr=0.2*fermidataupperlimsy, uplims=True, linestyle=' ', color='k', linewidth=2)
-plt.loglog(icecubex, icecubey, label='IceCube', color='b')
-plt.fill_between(icecubex, icecubelowerlimit, icecubeupperlimit, color='b', alpha=0.2)
-plt.loglog(icecubex, icecubelowerlimit, color='b', linestyle='-', alpha=0.5)
-plt.loglog(icecubex, icecubeupperlimit, color='b', linestyle='-', alpha=0.5)
+plt.loglog(icecubex, icecubey, label='IceCube', color='purple')
+plt.fill_between(icecubex, icecubelowerlimit, icecubeupperlimit, color='purple', alpha=0.2)
+plt.loglog(icecubex, icecubelowerlimit, color='purple', linestyle='-', alpha=0.5)
+plt.loglog(icecubex, icecubeupperlimit, color='purple', linestyle='-', alpha=0.5)
 
 # Load your simulation data
-datafilename = f'data/corona_{corona}_angle_{angle}_alpha_{alpha}.csv'
+datafilename = f'data/corona_{corona:.2f}_angle_{float(angle):.2f}_alpha_{alpha:.2f}.csv'
 datafilepath = os.path.join(base_dir, datafilename)
 data = np.loadtxt(datafilepath, delimiter=',', skiprows=1)
 data = data[data[:, 1] != 0]
@@ -48,7 +48,7 @@ data = data[data[:, 1] != 0]
 x = data[:, 0]
 y = data[:, 1]
 
-plt.loglog(x, y, marker='o', linestyle=' ', color='crimson', markersize=8, label='Simulated Flux')
+
 
 # Fit a polynomial in log-log space
 logx = np.log10(x)
@@ -79,8 +79,8 @@ y_lower = 10**logy_lower
 
 # Sort for plotting
 sorted_idx = np.argsort(x)
-plt.loglog(x[sorted_idx], y_fit[sorted_idx], color='darkred', label='Polynomial Fit')
-plt.fill_between(x[sorted_idx], y_lower[sorted_idx], y_upper[sorted_idx], color='crimson', alpha=0.3, label='95% Confidence')
+plt.loglog(x[sorted_idx], y_fit[sorted_idx], color='darkblue', label='Polynomial Fit')
+plt.fill_between(x[sorted_idx], y_lower[sorted_idx], y_upper[sorted_idx], color='darkblue', alpha=0.3, label='95% Confidence')
 
 # Final plot adjustments
 plt.xticks(fontsize=16)
@@ -90,6 +90,8 @@ plt.xlabel(r'$E$ [eV]', fontsize=16)
 plt.ylabel(r'$E^2 dN/dE$ [eV cm$^{-2}$ s$^{-1}$]', fontsize=16)
 plt.tight_layout()
 plt.legend(loc='best', fontsize=12)
+plt.grid(True)
 
+plt.loglog(x, y, marker='o', linestyle=' ', color='royalblue', markersize=8, label='Simulated Flux')
 plt.savefig('/Users/pauverdeguer/TFG/LaTeX/Figures/example_simulation_plot.pdf')
 plt.show()
