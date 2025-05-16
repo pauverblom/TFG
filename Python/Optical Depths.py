@@ -19,10 +19,10 @@ ax.set_xlim(1e2, 1e14)
 ax.set_ylim(5e-14, 5e8)
 
 # Plot the data with new colors
-ax.loglog(energies, Rc_1, label='Rc = Rs', color='darkviolet', linewidth=3)
-ax.loglog(energies, Rc_10, label='Rc = 10 Rs', color='mediumpurple', linewidth=3)
+ax.loglog(energies, Rc_1, label=r'$R_c = R_s$', color='darkviolet', linewidth=3)
+ax.loglog(energies, Rc_10, label=r'$R_c = 10R_s$', color='mediumpurple', linewidth=3)
 #ax.loglog(energies, Rc_50, label='Rc = 50 Rs', color='navy', linewidth=3)
-ax.loglog(energies, Rc_100, label='Rc = 100 Rs', color='darkslategray', linewidth=3)
+ax.loglog(energies, Rc_100, label=r'$R_c = 100R_s$', color='darkslategray', linewidth=3)
 
 
 # Add horizontal line at y = 1

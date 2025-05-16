@@ -68,7 +68,7 @@ x_sphere = R * np.outer(np.cos(u), np.sin(v))
 y_sphere = R * np.outer(np.sin(u), np.sin(v))
 z_sphere = R * np.outer(np.ones(np.size(u)), np.cos(v))
 
-ax3.plot_surface(x_sphere, y_sphere, z_sphere, color='gray', edgecolor='gray', alpha=0.3, linewidth=0.1)
+ax3.plot_surface(x_sphere, y_sphere, z_sphere, color='gray', edgecolor='gray', alpha=0.2, linewidth=0.1)
 
 # Add text for corona
 ax3.text(0, 0, -R * 1.3, 'Edge of Corona', color='gray', fontsize=10, ha='center',
